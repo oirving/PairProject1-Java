@@ -144,7 +144,12 @@ public class BasicWordCount {
 	      }
 	    }
 	    //结果集
-	    Word[] result = new Word[10];
+	    Word[] result = null;
+	    if(countMap.size() < 10) {
+	    	result = new Word[countMap.size()];
+	    }else {
+	    	result = new Word[10];
+	    }
 	    topN.toArray(result);
 		
 	    //对top10单词排序
