@@ -157,53 +157,41 @@ public class BasicWordCount {
 		return result;
 	}
 	
-	public long lineCount(String fileName)
-	{
+	public long lineCount(String fileName) {
 		FileReader filereader = null;
 		BufferedReader bufferedreader = null;
         //读入文件数据
 		long count=0;
 		//统计行数
-		try
-		{
+		try {
 			filereader = new FileReader(fileName);
 			bufferedreader = new BufferedReader(filereader);
 
 			String value = bufferedreader.readLine();
 			//按行读取
-			while (value != null)
-			//先判断是否为空
-			{
+			while (value != null) {
+				//先判断是否为空
 				if(!value.trim().isEmpty())
 					//string.trim()去除空白字符
 					count++;
 				value = bufferedreader.readLine();
 				//继续往下读
 			}
-		} 
-                  catch (FileNotFoundException e)
-		{
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		} 
-                  catch (IOException e)
-		{
-			e.printStackTrace();
-		} 
-                  finally
-		{
-			try
-			{
-				if (bufferedreader != null)
-					bufferedreader.close();
-				if (filereader != null)
-					filereader.close();
-			} 
-                           catch (IOException e)
-			{
+          finally { 
+        	  try {
+        		  if (bufferedreader != null)
+        			  bufferedreader.close();
+				  if (filereader != null)
+					  filereader.close();
+			      } catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-
 		return count;
 	}
 	
