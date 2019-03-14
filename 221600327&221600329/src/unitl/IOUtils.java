@@ -26,7 +26,7 @@ public class IOUtils {
         		bufferedReader= new BufferedReader(inputStreamReader);
         	}
         }catch(Exception e) {
-        	System.out.println("找不到文件");
+        	System.out.println("找不到"+fileName+"文件");
         	e.printStackTrace();
         }
 		return bufferedReader;
@@ -42,6 +42,7 @@ public class IOUtils {
 			writer = new BufferedWriter(new FileWriter(outputFile));
 			writer.write(fileContent);
 		} catch (IOException e) {
+			System.out.println("打开result.txt文件发生错误");
 			e.printStackTrace();
 		}finally {
 			try {

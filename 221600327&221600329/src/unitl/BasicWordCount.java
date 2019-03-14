@@ -146,8 +146,11 @@ public class BasicWordCount {
 	      } else {
 	        // 如果当前数据比小顶堆的队头大，则加入，否则丢弃
 	        if (topN.peek().getCountNum() < entry.getValue()) {
-	          topN.poll();
-	          topN.offer(new Word(entry.getKey(), entry.getValue()));
+	        	topN.poll();
+	        	topN.offer(new Word(entry.getKey(), entry.getValue()));
+	        }else if(topN.peek().getKey().compareTo(entry.getKey())>0){
+	        	topN.poll();
+		        topN.offer(new Word(entry.getKey(), entry.getValue()));
 	        }
 	      }
 	    }
